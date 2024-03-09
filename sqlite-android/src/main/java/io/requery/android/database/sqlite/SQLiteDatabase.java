@@ -92,6 +92,10 @@ public final class SQLiteDatabase extends SQLiteClosable implements SupportSQLit
     static {
         System.loadLibrary(SIGNAL_TOKENIZER);
         System.loadLibrary(SQLITE_EXTENSION);
+        System.loadLibrary("icudata");
+        System.loadLibrary("icui18n");
+        System.loadLibrary("icuuc");
+        System.loadLibrary("icuio");
         System.loadLibrary(LIBRARY_NAME);
     }
 
