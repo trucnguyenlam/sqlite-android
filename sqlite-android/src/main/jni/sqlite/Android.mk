@@ -1,4 +1,12 @@
 LOCAL_PATH:= $(call my-dir)
+
+# Prebuilt library section
+include $(CLEAR_VARS)
+LOCAL_MODULE := signal_tokenizer
+LOCAL_SRC_FILES := libs/signal_tokenizer/$(TARGET_ARCH_ABI)/libsignal_tokenizer.so
+include $(PREBUILT_SHARED_LIBRARY)
+
+# Sqlite section
 include $(CLEAR_VARS)
 
 # NOTE the following flags,
@@ -62,6 +70,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)
 
 LOCAL_MODULE:= libsqlite3x
 LOCAL_LDLIBS += -ldl -llog -latomic
+LOCAL_SHARED_LIBRARIES := signal_tokenizer
 
 include $(BUILD_SHARED_LIBRARY)
 

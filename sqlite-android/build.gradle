@@ -57,26 +57,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
 }
 
-ext {
-    sqliteDistributionUrl = "https://www.sqlite.org/2024/sqlite-amalgamation-3450100.zip"
-}
-
-tasks.register("downloadSqlite", Download) {
-    src project.sqliteDistributionUrl
-    dest "src/main/jni/sqlite.zip"
-}
-
-tasks.register("installSqlite", Copy) {
-    dependsOn downloadSqlite
-    from zipTree(downloadSqlite.dest).matching {
-        include "*/sqlite3.*"
-        eachFile { it.setPath(it.getName()) }
-    }
-    into "src/main/jni/sqlite"
-}
-
-preBuild.dependsOn installSqlite
-
 tasks.register("javadoc", Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
