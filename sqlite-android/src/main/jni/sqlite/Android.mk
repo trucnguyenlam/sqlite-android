@@ -12,6 +12,11 @@ LOCAL_SRC_FILES := libs/sqlite_extension/$(TARGET_ARCH_ABI)/libsqlite_extension.
 include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := icu
+LOCAL_SRC_FILES := libs/icu/$(TARGET_ARCH_ABI)/libicu.so
+include $(PREBUILT_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE := icudata
 LOCAL_SRC_FILES := libs/icudata/$(TARGET_ARCH_ABI)/libicudata.so
 include $(PREBUILT_SHARED_LIBRARY)
@@ -95,7 +100,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)
 
 LOCAL_MODULE:= libsqlite3x
 LOCAL_LDLIBS += -ldl -llog -latomic
-LOCAL_SHARED_LIBRARIES := signal_tokenizer sqlite_extension icudata icui18n icuuc icuio
+LOCAL_SHARED_LIBRARIES := signal_tokenizer sqlite_extension icu icudata icui18n icuuc icuio
 
 include $(BUILD_SHARED_LIBRARY)
 
