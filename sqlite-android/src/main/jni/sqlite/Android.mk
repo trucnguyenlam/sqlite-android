@@ -6,6 +6,11 @@ LOCAL_MODULE := signal_tokenizer
 LOCAL_SRC_FILES := libs/signal_tokenizer/$(TARGET_ARCH_ABI)/libsignal_tokenizer.so
 include $(PREBUILT_SHARED_LIBRARY)
 
+include $(CLEAR_VARS)
+LOCAL_MODULE := sqlite_extension
+LOCAL_SRC_FILES := libs/sqlite_extension/$(TARGET_ARCH_ABI)/libsqlite_extension.so
+include $(PREBUILT_SHARED_LIBRARY)
+
 # Sqlite section
 include $(CLEAR_VARS)
 
@@ -70,7 +75,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)
 
 LOCAL_MODULE:= libsqlite3x
 LOCAL_LDLIBS += -ldl -llog -latomic
-LOCAL_SHARED_LIBRARIES := signal_tokenizer
+LOCAL_SHARED_LIBRARIES := signal_tokenizer sqlite_extension
 
 include $(BUILD_SHARED_LIBRARY)
 
