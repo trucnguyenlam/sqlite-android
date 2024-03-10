@@ -2,18 +2,8 @@ LOCAL_PATH:= $(call my-dir)
 
 # Prebuilt library section
 include $(CLEAR_VARS)
-LOCAL_MODULE := signal_tokenizer
-LOCAL_SRC_FILES := libs/signal_tokenizer/$(TARGET_ARCH_ABI)/libsignal_tokenizer.so
-include $(PREBUILT_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE := sqlite_extension
 LOCAL_SRC_FILES := libs/sqlite_extension/$(TARGET_ARCH_ABI)/libsqlite_extension.so
-include $(PREBUILT_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := icu
-LOCAL_SRC_FILES := libs/icu/$(TARGET_ARCH_ABI)/libicu.so
 include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -22,13 +12,13 @@ LOCAL_SRC_FILES := libs/icudata/$(TARGET_ARCH_ABI)/libicudata.so
 include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := icui18n
-LOCAL_SRC_FILES := libs/icui18n/$(TARGET_ARCH_ABI)/libicui18n.so
+LOCAL_MODULE := icuuc
+LOCAL_SRC_FILES := libs/icuuc/$(TARGET_ARCH_ABI)/libicuuc.so
 include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := icuuc
-LOCAL_SRC_FILES := libs/icuuc/$(TARGET_ARCH_ABI)/libicuuc.so
+LOCAL_MODULE := icui18n
+LOCAL_SRC_FILES := libs/icui18n/$(TARGET_ARCH_ABI)/libicui18n.so
 include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -100,7 +90,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)
 
 LOCAL_MODULE:= libsqlite3x
 LOCAL_LDLIBS += -ldl -llog -latomic
-LOCAL_SHARED_LIBRARIES := signal_tokenizer sqlite_extension icu icudata icui18n icuuc icuio
+LOCAL_SHARED_LIBRARIES := icudata icuuc icui18n icuio sqlite_extension
 
 include $(BUILD_SHARED_LIBRARY)
 

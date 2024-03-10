@@ -86,15 +86,13 @@ public final class SQLiteDatabase extends SQLiteClosable implements SupportSQLit
     /**
      * Name of the compiled native library.
      */
-    public static final String SIGNAL_TOKENIZER = "signal_tokenizer";
     public static final String SQLITE_EXTENSION = "sqlite_extension";
     public static final String LIBRARY_NAME = "sqlite3x";
     static {
-        System.loadLibrary(SIGNAL_TOKENIZER);
-        System.loadLibrary("icu");
+        // the order of icu libraries much be this way
         System.loadLibrary("icudata");
-        System.loadLibrary("icui18n");
         System.loadLibrary("icuuc");
+        System.loadLibrary("icui18n");
         System.loadLibrary("icuio");
         System.loadLibrary(SQLITE_EXTENSION);
         System.loadLibrary(LIBRARY_NAME);
