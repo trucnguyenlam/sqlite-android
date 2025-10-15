@@ -63,5 +63,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)
 LOCAL_MODULE:= libsqlite3x
 LOCAL_LDLIBS += -ldl -llog -latomic
 
+LOCAL_LDFLAGS += -Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384
+
 include $(BUILD_SHARED_LIBRARY)
 
